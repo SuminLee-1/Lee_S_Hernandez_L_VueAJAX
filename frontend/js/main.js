@@ -20,7 +20,7 @@ const app = Vue.createApp({
     methods: {
         fetchCocktails() {
             this.isLoading = true;
-            fetch('http://localhost/Lee_S_Hernandez_L_VueAJAX/lumen/public/cocktails')
+            fetch('http://localhost:8888/Lee_S_Hernandez_L_VueAJAX/lumen/public/cocktails')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Failed to fetch cocktails from the local API');
@@ -66,7 +66,7 @@ const app = Vue.createApp({
         },
         getCocktail(cocktailName) {
             this.isLoading = true;
-            fetch(`http://localhost/Lee_S_Hernandez_L_VueAJAX/lumen/public/cocktails/${encodeURIComponent(cocktailName)}`)
+            fetch(`http://localhost:8888/Lee_S_Hernandez_L_VueAJAX/lumen/public/cocktails/${encodeURIComponent(cocktailName)}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Failed to fetch cocktail details from local API');
@@ -105,7 +105,7 @@ const app = Vue.createApp({
                             instructions: '',
                             glassType: details.strGlass || 'Not available'
                         };
-                        fetch('http://localhost/Lee_S_Hernandez_L_VueAJAX/lumen/public/cocktails')
+                        fetch('http://localhost:8888/Lee_S_Hernandez_L_VueAJAX/lumen/public/cocktails')
                             .then(response => {
                                 if (!response.ok) {
                                     throw new Error('Failed to fetch additional cocktail details from local API');

@@ -29,7 +29,6 @@
                 <li v-for="cocktail in cocktailsData">
                     <h3><a href="#cocktail" @click="getCocktail(cocktail.name)">{{cocktail.name}}</a></h3>
                 </li>
-                </li>
             </ul>
         </div>
         <div class="col-span-full" id="cocktailInfo">
@@ -38,7 +37,7 @@
             </div>
             <div id="cocktail" v-if="!error">
                 <img v-bind:src="cocktail.strDrinkThumb" alt="Cocktail image" class="cocktail-thumbnail">
-                <h3>{{cocktail.name}}</a></h3>
+                <h3>{{cocktail.name}}</h3>
                 <p>Prep time: {{cocktail.time}}</p>
                 <p>Ingredients: {{cocktail.ingredients}}</p>
                 <p>Instructions: {{cocktail.instructions}}</p>

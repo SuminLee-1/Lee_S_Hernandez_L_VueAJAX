@@ -37,16 +37,19 @@
             </li>
         </ul>
 
-        <div class="col-span-full" id="cocktailInfo">
+        <div class="col-span-full">
             <div v-if="error" class="error-message">{{ error }}</div>
-            <div v-else-if="cocktail.name">
-                <img v-if="cocktail.strDrinkThumb && cocktail.strDrinkThumb !== 'Not available'"
-                    :src="cocktail.strDrinkThumb" alt="Cocktail image" class="cocktail-thumbnail">
-                <h3>{{ cocktail.name }}</h3>
-                <p>Prep time: {{ cocktail.time }}</p>
-                <p>Ingredients: {{ cocktail.ingredients }}</p>
-                <p>Instructions: {{ cocktail.instructions }}</p>
-                <p>Glass type: {{ cocktail.glassType }}</p>
+
+            <div v-else-if="cocktail.name" id="cocktailInfo">
+                <img v-bind:src="cocktail.strDrinkThumb" alt="Cocktail image" class="cocktail-thumbnail">
+                <div class="cocktail-detail">
+                    <h3>{{ cocktail.name }}</h3>
+                    <p>Prep time: {{ cocktail.time }}</p>
+                    <p>Ingredients: {{ cocktail.ingredients }}</p>
+                    <p>Instructions: {{ cocktail.instructions }}</p>
+                    <p>Glass type: {{ cocktail.glassType }}</p>
+                </div>  
+
             </div>
             <div v-else>
                 <p>No cocktail selected. Click on a cocktail to view details.</p>

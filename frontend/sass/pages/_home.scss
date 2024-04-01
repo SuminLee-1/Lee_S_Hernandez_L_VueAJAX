@@ -1,6 +1,11 @@
+#header h2 {
+	font-family: "rough-love", "wausau", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
 body {
-	font-family: "Lato", sans-serif;
-	padding: 20px;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 #app {
@@ -8,7 +13,8 @@ body {
 }
 
 #cocktailInfo {
-	margin-top: 40px;
+	margin-top: 20px;
+	margin-bottom: 100px;
 	display: inline-flex;
 
 	.cocktail-thumbnail {

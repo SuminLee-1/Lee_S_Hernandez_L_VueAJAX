@@ -1,4 +1,38 @@
-const { createApp } = Vue;
+const cocktail = Vue.createApp({
+   created() {
+      // ideal to get your initial data here
+      console.log("created lifecycle hook called");
+      fetch('http://localhost:8888/Lee_S_Hernandez_L_VueAJAX/drinks-api/public/cocktails')
+      .then(res => res.json())
+      .then(data => {
+         console.log(data);
+         this.cocktailsData = data;
+         this.isLoading = false;
+      })
+      .catch(error => {
+         console.log(error);
+         this.isLoading = false;
+         // add code here to inform user there was an error
+      })
+   },
+   data() {
+      return {
+         cocktailsData: [],
+         cocktail: {},
+         strDrinkThumb: '',
+         strCategory: '',
+         time: "",
+         ingredients: "",
+         instructions: "",
+         glassType: "",
+         error: "",
+         isLoading: false
+     }     
+   },
+   methods: {
+      getCocktail(whichCocktail) {
+         console.log(whichCocktail);
+         let name = whichCocktail;
 
 createApp({
     created() {

@@ -7,9 +7,11 @@ const cocktail = Vue.createApp({
       .then(data => {
          console.log(data);
          this.cocktailsData = data;
+         this.isLoading = false;
       })
       .catch(error => {
          console.log(error);
+         this.isLoading = false;
          // add code here to inform user there was an error
       })
    },
@@ -23,7 +25,8 @@ const cocktail = Vue.createApp({
          ingredients: "",
          instructions: "",
          glassType: "",
-         error: ""
+         error: "",
+         isLoading: false
      }     
    },
    methods: {

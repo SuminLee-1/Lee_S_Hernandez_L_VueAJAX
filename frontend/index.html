@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, width=device-width">
     <title>Cocktail API</title>
-    <link href="https://fonts.googleapis.com/css?family=Lato%7CRaleway" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/upb5gcd.css">
     <link href="css/grid.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -12,26 +12,28 @@
 </head>
 
 <body>
-    <div id="title">            
-        <h1>Crafting Your Perfect Cocktail</h1>
-    </div>
-    
-    <div class="grid-con" id="app">
+    <h1>Clink on a cocktail to explore more information!</h1>    
+
+    <header id="header">        
+        <h2>Crafting Your Perfect Cocktail</h2>
 
         <div class="col-span-full">
             <div class="disc">
-            <p>Creating cocktails at home involves blending flavours and techniques. Start by gathering recipe ingredients and appropriate glassware. Follow the preparation instructions, measure each component, and pay attention to the mixing method, as it influences texture and temperature. Garnishing adds visual and flavour appeal, so choose wisely. Feel free to adjust ingredients and try new combinations. Enjoy your mixology journey!</p>
-            <p>Clink on a cocktail to explore more information</p>
+            <p>Creating cocktails at home involves blending flavours and techniques. Start by gathering recipe ingredients and appropriate glassware. Follow the preparation instructions, measure each component, and pay attention to the mixing method, as it influences texture and temperature. Garnishing adds visual and flavour appeal, so choose wisely. Feel free to adjust ingredients and try new combinations. <br><br>Enjoy your mixology journey!</p>
         </div>
-            <ul id="cocktail-list">
-                <!-- <div v-if="isLoading">Loading cocktails...</div> -->
+    </header>
+    
+    <div class="grid-con" id="app">
+        <div v-if="isLoading">Loading cocktails...</div>
+        <ul id="cocktail-list"  class="col-span-full">
                 
-                <li v-for="cocktail in cocktailsData">
-                    <h3><a href="#cocktail" @click="getCocktail(cocktail.name)">{{cocktail.name}}</a></h3>
+            <li v-for="cocktail in cocktailsData">
+                <h3><a href="#cocktail" @click="getCocktail(cocktail.name)">{{cocktail.name}}</a></h3>
                 </li>
                 </li>
             </ul>
         </div>
+        
         <div class="col-span-full" id="cocktailInfo">
             <div v-if="error">
                 {{error}}

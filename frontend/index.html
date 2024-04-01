@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, width=device-width">
@@ -14,16 +15,20 @@
 <body>
     <h1>Clink on a cocktail to explore more information!</h1>
 
-    <header id="header">        
+    <header id="header">
         <h2>Crafting Your Perfect Cocktail</h2>
 
         <div class="col-span-full">
             <div class="disc">
-                <p>Creating cocktails at home involves blending flavors and techniques. Start by gathering recipe ingredients and appropriate glassware. Follow the preparation instructions, measure each component, and pay attention to the mixing method, as it influences texture and temperature. Garnishing adds visual and flavor appeal, so choose wisely. Feel free to adjust ingredients and try new combinations.</p>
+                <p>Creating cocktails at home involves blending flavors and techniques. Start by gathering recipe
+                    ingredients and appropriate glassware. Follow the preparation instructions, measure each component,
+                    and pay attention to the mixing method, as it influences texture and temperature. Garnishing adds
+                    visual and flavor appeal, so choose wisely. Feel free to adjust ingredients and try new
+                    combinations.</p>
             </div>
         </div>
     </header>
-    
+
     <div class="grid-con" id="app">
         <div v-if="isLoading">Loading cocktails...</div>
         <ul id="cocktail-list" class="col-span-full">
@@ -35,7 +40,8 @@
         <div class="col-span-full" id="cocktailInfo">
             <div v-if="error" class="error-message">{{ error }}</div>
             <div v-else-if="cocktail.name">
-                <img v-bind:src="cocktail.strDrinkThumb" alt="Cocktail image" class="cocktail-thumbnail">
+                <img v-if="cocktail.strDrinkThumb && cocktail.strDrinkThumb !== 'Not available'"
+                    :src="cocktail.strDrinkThumb" alt="Cocktail image" class="cocktail-thumbnail">
                 <h3>{{ cocktail.name }}</h3>
                 <p>Prep time: {{ cocktail.time }}</p>
                 <p>Ingredients: {{ cocktail.ingredients }}</p>
@@ -48,4 +54,5 @@
         </div>
     </div>
 </body>
+
 </html>

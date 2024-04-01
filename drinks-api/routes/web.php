@@ -19,11 +19,11 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/drinks', 'DrinkController@getAll');
-$router->get('/drinks/{id}', 'DrinkController@getOne');
-$router->post('/drinks/add', 'DrinkController@save');
-$router->post('/drinks/edit/{id}', 'DrinkController@update');
-$router->delete('/drinks/delete/{id}', 'DrinkController@delete');
+$router->get('/cocktails', 'CocktailController@getAll');
+$router->get('/cocktails/{id}', 'CocktailController@getOne');
+$router->post('/cocktails/add', 'CocktailController@save');
+$router->post('/cocktails/edit/{id}', 'CocktailController@update');
+$router->delete('/cocktails/delete/{id}', 'CocktailController@delete');
 
 
 

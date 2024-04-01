@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <title>Cocktail API</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato%7CRaleway" rel="stylesheet">
+    <link href="css/grid.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="module" src="js/main.js"></script>
+</head>
+
+<body>
+
+    <div class="grid-con" id="app">
+        <div class="col-span-full">
+            <h2>Crafting Your Perfect Cocktail</h2>
+            <p>Creating your own cocktail at home is both an art and a science, as you blend flavours and techniques to reach the ideal balance. To begin this pleasant voyage, gather all of the ingredients given in the recipe. Make sure you have the proper glassware to improve both the visual and taste experience of your cocktail. To maintain uniformity, carefully follow the preparation instructions, correctly measuring each component. Pay close attention to the mixing method; whether shaken, stirred, or blended, each technique adds something distinct to the cocktail's ultimate texture and temperature. Garnishing not only provides visual appeal to the drink, but it also enhances or contrasts the flavours, so choose your garnish carefully. Finally, remember that the core of cocktail crafting is experimentation and personalization.Feel free to adjust the ingredients and proportions to suit your taste, and don’t be afraid to try new combinations. Cheers to your successful mixology adventure!</p>
+            <p>Clink on a cocktail to explore more information</p>
+            <ul id="cocktail-list">
+                <div v-if="isLoading">Loading cocktails...</div>
+                
+                <li v-for="cocktail in cocktailData">
+                    <h3>Name: <a href="#cocktail" @click="getCocktail(cocktail.name)">{{cocktail.name}}</a></h3>
+                    <img v-bind:src="cocktail.strDrinkThumb" alt="Cocktail image" class="cocktail-thumbnail">
+
+                </li>
+                </li>
+            </ul>
+        </div>
+        <div class="col-span-full" id="cocktailInfo">
+            <div v-if="error">
+                {{error}}
+            </div>
+            <div id="cocktail" v-if="!error">
+                <p>Prep time: {{cocktail.time}}</p>
+                <p>Ingredients: {{ingredients}}</p>
+                <p>Instructions: {{instructions}}</p>
+                <p>Glass type: {{glassType}}</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

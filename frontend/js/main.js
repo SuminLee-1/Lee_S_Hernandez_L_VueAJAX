@@ -1,4 +1,4 @@
-const bookStore = Vue.createApp({
+const cocktail = Vue.createApp({
    created() {
       // ideal to get your initial data here
       console.log("created lifecycle hook called");
@@ -6,7 +6,7 @@ const bookStore = Vue.createApp({
       .then(res => res.json())
       .then(data => {
          console.log(data);
-         this.cocktailData = data;
+         this.cocktailsData = data;
       })
       .catch(error => {
          console.log(error);
@@ -15,7 +15,8 @@ const bookStore = Vue.createApp({
    },
    data() {
       return {
-         cocktailData: [],
+         cocktailsData: [],
+         cocktail: {},
          strDrinkThumb: '',
          strCategory: '',
          time: "",
@@ -29,25 +30,23 @@ const bookStore = Vue.createApp({
       getCocktail(whichCocktail) {
          console.log(whichCocktail);
          let name = whichCocktail;
-         let convertedName = name.split(' ').join('+');
-         console.log(convertedName);
 
-         fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${convertedName}`)
+         fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`)
          .then(res => res.json())
          .then(data => {
-            console.log(data);
-            if(data.docs.length > 0) {
-               console.log(data.docs[0]);
-               const cocktail = data.docs[0];
-               this.error = false;
-               // condition ? TrueExpression : FalseExpression
-               this.strDrinkThumb = cocktail.strDrinkThumb ? cocktail.strDrinkThumb[0] : 'Not available';
-               this.strCategory = cocktail.strCategory ? cocktail.strCategory.toFixed(2) : 'Not available';
-               
+            if(data.drinks && data.drinks.length > 0) {
+              const details = data.drinks[0]; // Assuming you're interested in the first result
+              this.cocktail = { // Populate the cocktail object
+                strDrinkThumb: details.strDrinkThumb || 'Not available',
+                strCategory: details.strCategory || 'Not available',
+                // Populate other properties as needed
+              };
+              this.error = "";
             } else {
-               this.error = 'No Cocktail founded. Try Again!'
+              this.error = 'No Cocktail found. Try Again!';
             }
-         })
+          })
+          
          .catch(error => {
             console.error("There was an error fetching the cocktails:", error);
             this.error = "Failed to fetch cocktail data. Please try again later.";
@@ -58,4 +57,4 @@ const bookStore = Vue.createApp({
 
 });
 
-bookStore.mount("#app");
+cocktail.mount("#app");

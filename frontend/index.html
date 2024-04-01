@@ -12,41 +12,40 @@
 </head>
 
 <body>
-    <h1>Clink on a cocktail to explore more information!</h1>    
+    <h1>Clink on a cocktail to explore more information!</h1>
 
     <header id="header">        
         <h2>Crafting Your Perfect Cocktail</h2>
 
         <div class="col-span-full">
             <div class="disc">
-            <p>Creating cocktails at home involves blending flavours and techniques. Start by gathering recipe ingredients and appropriate glassware. Follow the preparation instructions, measure each component, and pay attention to the mixing method, as it influences texture and temperature. Garnishing adds visual and flavour appeal, so choose wisely. Feel free to adjust ingredients and try new combinations. <br><br>Enjoy your mixology journey!</p>
+                <p>Creating cocktails at home involves blending flavors and techniques. Start by gathering recipe ingredients and appropriate glassware. Follow the preparation instructions, measure each component, and pay attention to the mixing method, as it influences texture and temperature. Garnishing adds visual and flavor appeal, so choose wisely. Feel free to adjust ingredients and try new combinations.</p>
+            </div>
         </div>
     </header>
     
     <div class="grid-con" id="app">
         <div v-if="isLoading">Loading cocktails...</div>
-        <ul id="cocktail-list"  class="col-span-full">
-                
-                <li v-for="cocktail in cocktailsData">
-                    <h3><a href="#cocktail" @click="getCocktail(cocktail.name)">{{cocktail.name}}</a></h3>
-                </li>
-            </ul>
-        </div>
-        
+        <ul id="cocktail-list" class="col-span-full">
+            <li v-for="cocktail in cocktailsData" :key="cocktail.id">
+                <h3><a href="#cocktail" @click="getCocktail(cocktail.name)">{{ cocktail.name }}</a></h3>
+            </li>
+        </ul>
+
         <div class="col-span-full" id="cocktailInfo">
-            <div v-if="error">
-                {{error}}
-            </div>
-            <div id="cocktail" v-if="!error">
+            <div v-if="error" class="error-message">{{ error }}</div>
+            <div v-else-if="cocktail.name">
                 <img v-bind:src="cocktail.strDrinkThumb" alt="Cocktail image" class="cocktail-thumbnail">
-                <h3>{{cocktail.name}}</h3>
-                <p>Prep time: {{cocktail.time}}</p>
-                <p>Ingredients: {{cocktail.ingredients}}</p>
-                <p>Instructions: {{cocktail.instructions}}</p>
-                <p>Glass type: {{cocktail.glassType}}</p>
+                <h3>{{ cocktail.name }}</h3>
+                <p>Prep time: {{ cocktail.time }}</p>
+                <p>Ingredients: {{ cocktail.ingredients }}</p>
+                <p>Instructions: {{ cocktail.instructions }}</p>
+                <p>Glass type: {{ cocktail.glassType }}</p>
+            </div>
+            <div v-else>
+                <p>No cocktail selected. Click on a cocktail to view details.</p>
             </div>
         </div>
     </div>
-
 </body>
 </html>

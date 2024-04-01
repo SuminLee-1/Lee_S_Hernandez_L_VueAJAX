@@ -9,9 +9,16 @@ body {
 
 #cocktailInfo {
 	margin-top: 40px;
+	display: inline-flex;
+
+	.cocktail-thumbnail {
+		max-width: 300px;
+		height: auto;
+		border-radius: 5px;
+  }
 }
 
 a {
-	color:crimson;
+	color:rgb(105, 37, 0);
 	text-decoration: none;
 }
